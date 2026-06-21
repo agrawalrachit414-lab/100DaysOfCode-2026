@@ -1,24 +1,14 @@
-#include <stdio.h>
-
-#define STADIUMS 3
-#define MAX_GOALS 100
-#define PLAYERS 5
-
-int goals[STADIUMS][MAX_GOALS];
-int goalCount[STADIUMS] = {0};
-int playerGoals[PLAYERS] = {0};
-
-void addGoal(int stadium, int minute, int playerID)
+void addGoalToStadium2(int minute, int playerID)
 {
-    if (goalCount[stadium] >= MAX_GOALS)
+    if (goalCount[2] >= MAX_GOALS)
     {
-        printf("Stadium is full\n");
+        printf("Stadium 2 is full\n");
         return;
     }
 
-    goals[stadium][goalCount[stadium]] = minute;
+    goals[2][goalCount[2]] = minute;
     playerGoals[playerID]++;
-    goalCount[stadium]++;
+    goalCount[2]++;
 }
 
 int totalGoals()
@@ -56,33 +46,4 @@ void displayStadium(int stadium)
     {
         printf("%d ", goals[stadium][i]);
     }
-    printf("\n");
-}
-
-int main()
-{
-    addGoal(0, 15, 0);
-    addGoal(0, 42, 1);
-
-    addGoal(1, 8, 2);
-    addGoal(1, 67, 2);
-
-    addGoal(2, 23, 2);
-    addGoal(2, 55, 3);
-    addGoal(2, 80, 4);
-
-    printf("Total Goals: %d\n", totalGoals());
-
-    printf("Top Scorer: Player %d\n", topScorer());
-
-    printf("Stadium 0 goals: ");
-    displayStadium(0);
-
-    printf("Stadium 1 goals: ");
-    displayStadium(1);
-
-    printf("Stadium 2 goals: ");
-    displayStadium(2);
-
-    return 0;
 }
